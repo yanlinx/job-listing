@@ -1,8 +1,26 @@
 <div class="pull-right">
-  <%= link_to("Add a job", new_admin_job_path, :class => "btn btn-default" ) %>
+
+  <%= link_to("New job",new_admin_job_path, :class => "btn btn-default" ) %>
 </div>
 
-<br><br>
+<br><br><br>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 
 <table class="table table-boldered">
   <% @jobs.each do |job| %>
