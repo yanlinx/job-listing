@@ -1,5 +1,5 @@
-<h1><%= @job.title %></h1>
-<p><%= @job.description %></p>
+<h1 class="container"><%= @job.title%></h1>
+<p class="container"><%= @job.description %></p>
 <div class="text-center">
-  <%= link_to("递交简历",new_job_resume_path(@job),style: "font-size: 30px; text-decoration: underline;")%>
+  <%= link_to("Apply",new_job_resume_path(@job),class: "btn btn-xs btn-primary",style: "font-size: 25px;")%>
 </div>

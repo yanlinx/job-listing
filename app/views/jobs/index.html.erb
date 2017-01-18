@@ -1,47 +1,66 @@
-<!-- <div class="col-md-12"> -->
-    <!-- <div class="pull-right"> -->
-         <!-- <%= link_to("New Job", new_job_path, :class => "btn btn-default" ) %> -->
-    <!-- </div> -->
-<div class="dropdown clearfix pull-right">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDriver" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    排序
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuDrivier">
-    <li><%= link_to("按照薪资下限排序",jobs_path(:order =>"by_lower_bound"))%></li>
-    <li><%= link_to("按照薪资上限排序",jobs_path(:order =>"by_upper_bound"))%></li>
-    <li><%= link_to("按照发表时间排序",jobs_path)%></li>
+<div class="dropdown clearfix pull-right" style="width:86px; padding-top:20px;">
+    <button class="btn btn-befault dropdown-toggle background-color:#4CAF50;" type="button" id="dropdownMenuDriver" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <strong>Sort</strong>
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDrivier">
+        <li><%= link_to("Upper salary",jobs_path(:order =>"by_lower_bound"))%></li>
+        <li><%= link_to("Lower salary",jobs_path(:order =>"by_upper_bound"))%></li>
+        <li><%= link_to("Publish time",jobs_path)%></li>
     </li>
-  </ul>
+</ul>
 </div>
+<br>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px;
+    box-shadow: 10px 10px 5px grey;
+}
 
-    <table class="table table-hover">
-      <br>
-      <br>
-      <thead>
+td, th {
+    border: none;
+    text-align: left;
+    padding: 15px;
+
+}
+th {background-color: #FFCA28}
+
+tr:nth-child(even) {
+    background-color: #FFF8E1;
+}
+</style>
+<table>
+<br>
+<br>
+<thead>
+    <tr>
+        <th>Job</th>
+        <th>Description</th>
+        <th>wage</th>
+        <!-- <th>Status</th> -->
+        <th>time</th>
+    </thead>
+    <tbody>
+        <% @jobs.each do |job|%>
         <tr>
-          <th>Job</th>
-          <th>Description</th>
-          <th>Upper wage</th>
-          <th>Lower wage</th>
-          <th>Status</th>
-          <th>Lately</th>
-      </thead>
-        <tbody>
-            <% @jobs.each do |job|%>
-            <tr>
-                <td><%= link_to(job.title,job_path(job))%></td>
-                <td><%= job.description %></td>
-                <td><%= job.wage_upper_bound %></td>
-                <td><%= job.wage_lower_bound %></td>
-                <td>
-                    <%= link_to("Edit",edit_job_path(job))%>
-                    |
-                    <%= link_to("Delete",job_path(job),method: :delete,data:{confirm: "Are you sure"} )%>
-                </td>
-                <td><%= job.created_at %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+            <td><%= link_to(job.title,job_path(job))%></td>
+            <td><%= job.description %></td>
+            <td><span style= "color:#616161"><%= job.wage_lower_bound %>-<%= job.wage_upper_bound %>/month</span></td>
+            <!-- <td>
+                <%= link_to edit_job_path(job),class: "btn btn-xs btn-info" do%><i class="fa fa-pencil"></i><% end %>
+                <%= link_to job_path(job),class: "btn btn-xs btn-danger",method: :delete,data:{confirm: "Are you sure"} do%><i class="fa fa-trash-o"></i><% end %>
+            </td> -->
+            <td><%= local_time(job.created_at, '%B %e, %Y %l:%M%p')%></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<div class="text-center">
+
+    <%= will_paginate @jobs,renderer: BootstrapPagination::Rails  %>
+</div>
+</div>
