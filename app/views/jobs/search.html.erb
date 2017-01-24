@@ -1,0 +1,51 @@
+<br>
+<div class="search-wrap container">
+  <%= render :partial => "jobs/search_bar" %>
+</div>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px;
+    box-shadow: 10px 10px 5px grey;
+}
+
+td, th {
+    border: none;
+    text-align: left;
+    padding: 15px;
+
+}
+th {background-color: #FFCA28}
+
+tr:nth-child(even) {
+    background-color: #FFF8E1;
+}
+</style>
+<div class="search-result">
+  <table class="table table-hover table-boldered table-striped custab">
+    <thead>
+      <tr>
+        <th>Job</th>
+        <th>Description</th>
+        <th>Wage</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= link_to(job.title,job_path(job))%></td>
+          <td><%= job.description %></td>
+          <td><span style= "color:#616161"><%= job.wage_lower_bound %>-<%= job.wage_upper_bound %>/month</span></td>
+          <td><%= local_time(job.created_at, '%B %e, %Y %l:%M%p')%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="text-center">
+    <%= will_paginate @jobs,renderer: BootstrapPagination::Rails  %>
+  </div>
+</div>
