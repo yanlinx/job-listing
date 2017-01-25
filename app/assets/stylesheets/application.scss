@@ -61,7 +61,7 @@
 }
 
 .navbar-default {
-    
+
     background-color: #212121;//背景颜色
     border-color: #212121;//边框色
     margin-bottom: 0;//底部 margin 不撑开距离
@@ -97,8 +97,10 @@
     left:0px;
     right:0px;
     margin-bottom:0px;
+    text-align: center;
+    z-index: 1000;
 }
 body{
     background-color: #E0E0E0;
-    margin-bottom:50px;
+    margin-bottom:65px;
 }

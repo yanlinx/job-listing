@@ -1,8 +1,10 @@
 <%= simple_form_for @job do |f| %>
 <%= f.input :title %>
-<%= f.input :description %>
-<%= f.input :wage_upper_bound,:label =>"薪资上限"%>
-<%= f.input :wage_lower_bound,:label =>"薪资下限"%>
+<%= f.input :description input_html: { class: "simple_format"} %>
+<%= f.input :wage_upper_bound,:label =>"Upper salary"%>
+<%= f.input :wage_lower_bound,:label =>"Lower salary"%>
+<%= f.input :location, :label => "location", input_html: { class: "form-control"}, placeholder: ""%>
+<%= f.input :company_name, :label => "campany", input_html: { class: "form-control"} %>
 <%= f.input :contact_email %>
 <%= f.input :is_hidden %>
 <%= f.submit "Submit" %>

@@ -1,5 +1,15 @@
 <h1 class="container"><%= @job.title%></h1>
-<p class="container"><%= @job.description %></p>
-<div class="text-center">
-  <%= link_to("Apply",new_job_resume_path(@job),class: "btn btn-xs btn-primary",style: "font-size: 25px;")%>
+<p class="info container">
+    <span class="salary"><%= @job.wage_lower_bound %> - <%= @job.wage_upper_bound %></span>
+    <span>/</span>
+    <span><span class="fa fa-map-marker"></span> <%= @job.location %></span>
+    <span>/</span>
+    <span><span class="fa fa-calendar"></span> <%= @job.created_at.to_s.slice(0, 10) %></span>
+</p>
+<div class="container">
+ <%= link_to("Apply now",new_job_resume_path(@job),class: "btn btn-s btn-primary")%>
+</div>
+<h3 class="container"><strong>Requirements:</strong></h3>
+<div class="container">
+<p class="container"><%= simple_format(@job.description) %></p>
 </div>

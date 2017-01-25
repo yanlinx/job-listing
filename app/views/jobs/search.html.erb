@@ -2,12 +2,12 @@
 <div class="search-wrap container">
   <%= render :partial => "jobs/search_bar" %>
 </div>
+<br>
 <style>
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
-    margin: 20px;
+    width: 90%;
     box-shadow: 10px 10px 5px grey;
 }
 
@@ -24,11 +24,12 @@ tr:nth-child(even) {
 }
 </style>
 <div class="search-result">
-  <table class="table table-hover table-boldered table-striped custab">
+  <table align="center">
     <thead>
       <tr>
         <th>Job</th>
-        <th>Description</th>
+        <th>Company</th>
+        <th>Location</th>
         <th>Wage</th>
         <th>Time</th>
       </tr>
@@ -37,7 +38,8 @@ tr:nth-child(even) {
       <% @jobs.each do |job| %>
         <tr>
           <td><%= link_to(job.title,job_path(job))%></td>
-          <td><%= job.description %></td>
+          <td><%= job.company_name %></td>
+          <td><%= job.location %></td>
           <td><span style= "color:#616161"><%= job.wage_lower_bound %>-<%= job.wage_upper_bound %>/month</span></td>
           <td><%= local_time(job.created_at, '%B %e, %Y %l:%M%p')%></td>
         </tr>

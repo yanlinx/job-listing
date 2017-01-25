@@ -1,4 +1,5 @@
-<div class="dropdown clearfix pull-right" style="width:86px; padding-top:20px;">
+<br>
+<div class="dropdown clearfix pull-right" style="width:130px; padding-top:20px;">
     <button class="btn btn-befault dropdown-toggle background-color:#4CAF50;" type="button" id="dropdownMenuDriver" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       <strong>Sort</strong>
         <span class="caret"></span>
@@ -11,15 +12,12 @@
 </ul>
 </div>
 <br>
-<div class="search-wrap container">
-      <%= render :partial => "jobs/search_bar" %>
-</div>
+
 <style>
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
-    margin: 20px;
+    width: 90%;
     box-shadow: 10px 10px 5px grey;
 }
 
@@ -35,27 +33,24 @@ tr:nth-child(even) {
     background-color: #FFF8E1;
 }
 </style>
-<table>
+<table align="center">
 <br>
 <br>
 <thead>
     <tr>
         <th>Job</th>
-        <th>Description</th>
-        <th>Wage</th>
-        <!-- <th>Status</th> -->
-        <th>Time</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Salary range</th>
+        <th>Date posted</th>
     </thead>
     <tbody>
         <% @jobs.each do |job|%>
         <tr>
             <td><%= link_to(job.title,job_path(job))%></td>
-            <td><%= job.description %></td>
+            <td><%= job.company_name %></td>
+            <td><%= job.location %></td>
             <td><span style= "color:#616161"><%= job.wage_lower_bound %>-<%= job.wage_upper_bound %>/month</span></td>
-            <!-- <td>
-                <%= link_to edit_job_path(job),class: "btn btn-xs btn-info" do%><i class="fa fa-pencil"></i><% end %>
-                <%= link_to job_path(job),class: "btn btn-xs btn-danger",method: :delete,data:{confirm: "Are you sure"} do%><i class="fa fa-trash-o"></i><% end %>
-            </td> -->
             <td><%= local_time(job.created_at, '%B %e, %Y %l:%M%p')%></td>
         </tr>
         <% end %>
@@ -63,7 +58,6 @@ tr:nth-child(even) {
 </table>
 
 <div class="text-center">
-
     <%= will_paginate @jobs,renderer: BootstrapPagination::Rails  %>
 </div>
 </div>
