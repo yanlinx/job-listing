@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap/alert
+//= require bootstrap-sprockets
 //= require bootstrap/dropdown
 //= require_tree .
 //= require local_time
