@@ -2,14 +2,24 @@
 <p class="info container">
     <span class="salary"><%= @job.wage_lower_bound %> - <%= @job.wage_upper_bound %></span>
     <span>/</span>
-    <span><span class="fa fa-map-marker"></span> <%= @job.location %></span>
-    <span>/</span>
+    <!-- <span><span class="fa fa-map-marker"></span> <%= @job.location %></span>
+    <span>/</span> -->
     <span><span class="fa fa-calendar"></span> <%= @job.created_at.to_s.slice(0, 10) %></span>
 </p>
-<div class="container">
- <%= link_to("Apply now",new_job_resume_path(@job),class: "btn btn-s btn-primary")%>
-</div>
-<h3 class="container"><strong>Requirements:</strong></h3>
+<hr>
+<h3 class="container"><strong>Job Descripions:</strong></h3>
 <div class="container">
 <p class="container"><%= simple_format(@job.description) %></p>
+</div>
+<br>
+<h4 class="container"><strong>Location: </strong></h4>
+<div class="container">
+<p class="container"><%= @job.location %></p>
+</div>
+<h4 class="container"><strong>Contact email:</strong></h4>
+<div class="container">
+<p class="container"><%= @job.contact_email %></p>
+</div>
+<div class="container">
+ <%= link_to("Apply now",new_job_resume_path(@job),class: "btn btn-s btn-primary")%>
 </div>

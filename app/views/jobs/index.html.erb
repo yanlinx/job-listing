@@ -36,7 +36,7 @@ tr:nth-child(even) {
 <table align="center">
 <br>
 <br>
-<thead>
+<thead style="font-size:125%">
     <tr>
         <th>Job</th>
         <th>Company</th>
@@ -47,11 +47,11 @@ tr:nth-child(even) {
     <tbody>
         <% @jobs.each do |job|%>
         <tr>
-            <td><%= link_to(job.title,job_path(job))%></td>
-            <td><%= job.company_name %></td>
-            <td><%= job.location %></td>
-            <td><span style= "color:#616161"><%= job.wage_lower_bound %>-<%= job.wage_upper_bound %>/month</span></td>
-            <td><%= local_time(job.created_at, '%B %e, %Y %l:%M%p')%></td>
+            <td><%= link_to(job.title,job_path(job))%> <i class="fa fa-chevron-right" aria-hidden="true" style="color:#FF9800;"></i> </td>
+            <td><i class="fa fa-building" aria-hidden="true"></i> <%= job.company_name %></td>
+            <td><i class="fa fa-map-marker" aria-hidden="true"> <%= job.location %></i></td>
+            <td><i class="fa fa-jpy" aria-hidden="true"> <span style= "color:#616161"><%= job.wage_lower_bound %>-<%= job.wage_upper_bound %></span></td>
+            <td><i class="fa fa-clock-o" aria-hidden="true"> <%= local_time(job.created_at, '%B %e, %Y %l:%M%p')%></td>
         </tr>
         <% end %>
     </tbody>
