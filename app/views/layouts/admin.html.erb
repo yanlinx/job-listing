@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Job Listing
+        <title>King Offer
         </title>
         <%= csrf_meta_tags %>
 
@@ -10,16 +10,16 @@
     </head>
 
     <body>
-
         <div class="row">
             <%= render "common/navbar" %>
             <%= render "common/flashes" %>
             <div class="container-fluid">
                 <div class="col-md-2 text-center">
+
                     <ul class="nav nav-pills nav-stacked" style="max-width:150px; padding-top:20px;">
-                        <li class="active"><%= link_to("Home", root_path ) %>
+                        <li class="active"><%= link_to("Job List", jobs_path) %>
                         </li>
-                        <li class="active"><%= link_to("Jobs", jobs_path) %>
+                        <li class="active"><%= link_to("New Job", new_admin_job_path) %>
                         </li>
                     </ul>
                 </div>
